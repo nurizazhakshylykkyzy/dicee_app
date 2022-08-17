@@ -1,48 +1,19 @@
+import 'package:dicee_app/pages/dice_getX_page.dart';
+
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-void main() {
-  return runApp(
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text(' Dice'),
-          backgroundColor: Color.fromRGBO(15, 157, 88, 1),
-        ),
-        body: Dice(),
-      ),
-    ),
-  );
-}
+void main() => runApp(DiceApp());
 
-class Dice extends StatefulWidget {
-  @override
-  _DiceState createState() => _DiceState();
-}
-
-class _DiceState extends State<Dice> {
-  int dice_no = 1;
-  void update() {
-    setState(() {
-      dice_no = Random().nextInt(6) + 1;
-    });
-  }
+class DiceApp extends StatelessWidget {
+  const DiceApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Expanded(
-        child: Padding(
-          padding: const EdgeInsets.all(50.0),
-          child: FlatButton(
-            child: Image.asset('images/dice$dice_no.png'),
-            onPressed: () {
-              update();
-            },
-          ),
-        ),
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DiceGetXPage(),
+      // home: DicePage(),
     );
   }
 }
